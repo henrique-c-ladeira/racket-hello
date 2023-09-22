@@ -3,13 +3,22 @@
 ;;; (listcount x) -> returns the number of elements in x
 ;;; listcount is the same as length
 (define (listcount x)
-  (if (null? x) 0 (+ 1 (listcount (cdr x)))))
+  (if (null? x)
+    0
+    (+ 1 (listcount (cdr x)))
+  )
+)
 
 ;;; (isMember? x y) -> #t if y contains x; #f otherwise
 (define (isMember? x y)
-  (if (null? y) (if (null? x) #t #f)
-  (if (equal? x (car y)) #t (isMember? x (cdr y)))))
-
+  (if (null? y)
+    (if (null? x) #t #f)
+    (if (equal? x (car y)) 
+      #t 
+      (isMember? x (cdr y))
+    )
+  )
+)
 
 ;;; (customAppend x y) -> 
 ;;; returns a new list consisting of the elements of x followed by y
