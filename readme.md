@@ -1,4 +1,4 @@
-Hello World Racket
+Hello Racket
 
 Run:
 `racket hello.rkt`
