@@ -2,6 +2,7 @@
 
 (define (tree-size x)
   (if (list? (car x))
+
     (if (null? (car x))
       0
       (if (null? (cdr x))
@@ -9,6 +10,7 @@
         (+ (tree-size (car x)) (tree-size (cdr x)))
       )
     )
+    
     (if (null? x)
       0
       (if (null? (cdr x))
@@ -21,12 +23,16 @@
 
 (define (prune-tree x level)
   (if (null? x)
+
     `()
+
     (if (list? (car x))
+
       (cons 
         (prune-tree (car x) level) 
         (prune-tree (cdr x) level)
       )
+
       (if (= level 1)
         (list (car x) `() `())
         (cons (car x) (prune-tree (cdr x) (- level 1)))
@@ -39,11 +45,12 @@
   (if (null? x)
       0
     (if (list? (car x))
-      (
-        + 
+
+      (+ 
         (count-tree (car x) target) 
         (count-tree (cdr x) target)
       )
+
       (if (= (car x) target)
         (+ 1 (count-tree (cdr x) target))
         (count-tree (cdr x) target)
